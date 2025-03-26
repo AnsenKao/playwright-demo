@@ -27,9 +27,3 @@ jobs:
       - name: Run tests
         run: |
           pytest --html=report.html
-
-      - name: Upload report
-        uses: actions/upload-artifact@v3
-        with:
-          name: playwright-report
-          path: report.html
