@@ -26,10 +26,14 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest --html=report.html --video=off
-        
-      - name: Upload report
+          pytest --html=report.html
+
+      - name: Delete video files (ensure clean report)
+        run: |
+          find . -type f -name "*.webm" -delete
+
+      - name: Upload test report
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: test-report
           path: report.html
